@@ -8,4 +8,4 @@ Este projeto/exercício é fornecido pela Alura como parte do curso Lógica de P
 
 | Adicões | Status |
 | --- | --- |
-| Mudar o visual para material design | Planejado |
+| Mudar o visual para material design | Em Andamento |
