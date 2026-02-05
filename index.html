@@ -4,31 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- O título que aparece na aba do navegador -->
     <title>AluGames</title>
+    <!-- Link para o arquivo CSS que contém toda a estilização -->
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body class="body">
+    <!-- Main: Tag semântica que define o conteúdo principal da página -->
     <main class="container main">
+
+        <!-- Header: Cabeçalho com o logotipo da marca -->
         <header class="header">
             <img src="img/logo.svg" alt="Logo AluGames" class="logo">
         </header>
 
-        <section class="divisor" aria-hidden="true">
-            <div class="divisor__line"></div>
-            <img src="img/fade_bar.svg" alt="Visual bar" class="divisor__bar">
-            <div class="divisor__line"></div>
-        </section>
-
+        <!-- H1: O título principal. Títulos são essenciais para SEO e acessibilidade -->
         <h1 class="page-title">Aluguel de <span class="page-title__emphasis">boardgames</span></h1>
 
+        <!-- Dashboard: Área principal de listagem dos jogos -->
         <section class="dashboard">
+            <!-- UL: Lista não ordenada para agrupar os itens dos jogos -->
             <ul class="dashboard__items">
+
+                <!-- Cada LI representa um "card" de jogo. O 'id' é usado pelo JavaScript para identificar o elemento -->
                 <li class="dashboard__items__item" id="game-1">
                     <div class="dashboard__item__img">
                         <img src="img/monopoly.png" alt="Capa jogo Monopoly">
                     </div>
                     <p class="dashboard__item__name">Monopoly</p>
+                    <!-- O atributo 'onclick' chama a função do JS passando o ID específico deste jogo -->
                     <a onclick="alterarStatus(1)" href="#" class="dashboard__item__button">Alugar</a>
                 </li>
                 <li class="dashboard__items__item" id="game-2">
@@ -39,20 +44,24 @@
                     <a onclick="alterarStatus(2)" href="#" class="dashboard__item__button">Alugar</a>
                 </li>
                 <li class="dashboard__items__item" id="game-3">
+                    <!-- Note que este jogo já começa no estado 'rented' (alugado) -->
                     <div class="dashboard__item__img dashboard__item__img--rented">
                         <img src="img/takenoko.png" alt="Capa jogo Takenoko">
                     </div>
                     <p class="dashboard__item__name">Takenoko</p>
+                    <!-- O botão também começa com a classe de retorno (devolver) -->
                     <a onclick="alterarStatus(3)" href="#" class="dashboard__item__button dashboard__item__button--return">Devolver</a>
                 </li>
             </ul>
         </section>
 
+        <!-- Footer: Rodapé com elementos visuais de fechamento da página -->
         <footer class="footer">
             <img src="img/hachuras.svg" alt="" class="hachuras">
         </footer>
     </main>
 
+    <!-- Script: Importação do arquivo JS no final para garantir que o HTML seja carregado primeiro -->
     <script src="js/app.js"></script>
 </body>
 

@@ -1,9 +1,20 @@
+/**
+ * AluGames - Design System (Material Design 3)
+ * 
+ * Este arquivo utiliza Vanilla CSS com Variáveis (Custom Properties) para criar
+ * uma interface moderna baseada nos princípios do MD3 da Google.
+ */
+
 @import url(_reset.css);
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
 
 :root {
-    /* Material Design 3 Color Tokens - Dark Theme (Midnight Lavender) */
+    /** 
+     * TOKENS DE CORES (PALETA DARK - MIDNIGHT LAVENDER)
+     * Seguindo a convenção do MD3 para cores do sistema.
+     */
     --md-sys-color-primary: #D0BCFF;
+    /* Cor de ação principal */
     --md-sys-color-on-primary: #381E72;
     --md-sys-color-primary-container: #4F378B;
     --md-sys-color-on-primary-container: #EADDFF;
@@ -14,19 +25,22 @@
     --md-sys-color-tertiary: #EFB8C8;
     --md-sys-color-on-tertiary: #492532;
     --md-sys-color-surface: #1C1B1F;
+    /* Cor de fundo de superfícies (cards, páginas) */
     --md-sys-color-on-surface: #E6E1E5;
     --md-sys-color-surface-variant: #49454F;
     --md-sys-color-on-surface-variant: #CAC4D0;
     --md-sys-color-outline: #938F99;
+    /* Cor para bordas e contornos */
     --md-sys-color-error: #F2B8B5;
+    /* Cor para estados de atenção/erro */
 
-    /* Elevations */
+    /** ELEVAÇÕES (SOMBRAS) - Criam a percepção de profundidade e hierarquia visual */
     --md-sys-elevation-1: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
     --md-sys-elevation-2: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
     --md-sys-elevation-3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
 }
 
-/* Animations */
+/** ANIMAÇÕES: Definem o comportamento de entrada dos elementos na tela */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -74,41 +88,12 @@
     animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.header {
-    margin-bottom: 2rem;
-}
-
-.logo {
-    filter: drop-shadow(0 0 8px rgba(208, 188, 255, 0.5));
-    transition: transform 0.3s ease;
-}
-
-.logo:hover {
-    transform: scale(1.05);
-}
-
-.divisor {
-    display: flex;
-    gap: 32px;
-    align-items: center;
-    margin: 48px 0 32px;
-    width: 100%;
-    max-width: 900px;
-}
-
-.divisor__line {
-    height: 1px;
-    flex-grow: 1;
-    background: linear-gradient(to right, transparent, var(--md-sys-color-outline), transparent);
-    opacity: 0.3;
-}
-
 .page-title {
     font-family: 'Outfit', sans-serif;
-    font-weight: 700;
+    /* clamp: Faz o título ser responsivo entre 2.5rem e 5rem automaticamente */
     font-size: clamp(2.5rem, 8vw, 5rem);
-    margin-bottom: 3.5rem;
     text-align: center;
+    margin-bottom: 3.5rem;
     letter-spacing: -0.03em;
     line-height: 1.1;
 }
@@ -132,9 +117,9 @@
 }
 
 .dashboard {
+    /* GLASSMORPHISM: Efeito de vidro borrado muito comum em interfaces modernas */
     background-color: rgba(28, 27, 31, 0.4);
     backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-radius: 32px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: clamp(1.5rem, 5vw, 4rem);
@@ -144,7 +129,9 @@
 }
 
 .dashboard__items {
+    /* CSS GRID: Ideal para layouts bidimensionais (colunas e linhas) */
     display: grid;
+    /* repeat(auto-fit...): Cria colunas automáticas que se ajustam ao tamanho da tela */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 3rem;
     list-style: none;
@@ -162,16 +149,21 @@
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
+    text-align: center;
 }
 
 .dashboard__items__item:hover {
     transform: translateY(-12px);
+    /* Efeito de flutuação ao passar o mouse */
     background-color: rgba(73, 69, 79, 0.3);
     border-color: rgba(208, 188, 255, 0.2);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* State Layer for hover */
+/** 
+ * STATE LAYER: Pseudo-elemento que cria o "brilho" ao passar o mouse. 
+ * pointer-events: none; é CRITICAL para que o clique do mouse passe por ele e atinja o botão.
+ */
 .dashboard__items__item::before {
     content: "";
     position: absolute;
@@ -182,6 +174,8 @@
     background: var(--md-sys-color-on-surface);
     opacity: 0;
     transition: opacity 0.2s ease;
+    pointer-events: none;
+    /* Permite que o clique passe para o botão abaixo */
 }
 
 .dashboard__items__item:hover::before {
@@ -208,8 +202,10 @@
 
 .dashboard__items__item:hover .dashboard__item__img img {
     transform: scale(1.1);
+    /* Zoom suave na imagem do jogo no hover */
 }
 
+/* Modificador para estado de ALUGADO: Escurece a imagem e deixa em tons de cinza */
 .dashboard__item__img--rented {
     filter: grayscale(1) contrast(0.8);
 }
@@ -225,7 +221,6 @@
     padding: 8px 16px;
     font-weight: 700;
     font-size: 0.9rem;
-    border-radius: 12px;
     letter-spacing: 0.05em;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     z-index: 2;
@@ -238,6 +233,7 @@
     margin-bottom: 2.5rem;
     color: var(--md-sys-color-on-surface);
     text-align: center;
+    font-weight: 700;
 }
 
 .dashboard__item__button {
@@ -246,23 +242,24 @@
     justify-content: center;
     font-weight: 700;
     font-size: 1rem;
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
     padding: 0 32px;
     height: 48px;
     min-width: 160px;
     border-radius: 24px;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    background-color: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
     box-shadow: var(--md-sys-elevation-1);
     letter-spacing: 0.02em;
+    font-weight: 700;
 }
 
 .dashboard__item__button:hover {
     box-shadow: var(--md-sys-elevation-2);
     transform: translateY(-2px);
     background-color: #EADDFF;
+    filter: brightness(1.1);
     /* Lighten primary */
 }
 
@@ -270,6 +267,7 @@
     transform: translateY(0) scale(0.98);
 }
 
+/* Modificador para o botão de DEVOLVER: Estilo "Outlined" (apenas contorno) */
 .dashboard__item__button--return {
     background-color: transparent;
     color: var(--md-sys-color-primary);
@@ -298,7 +296,7 @@
     opacity: 0.5;
 }
 
-/* Responsive adjustments */
+/* RESPONSIVIDADE: Ajustes para telas menores (celulares) */
 @media (max-width: 768px) {
     .body {
         padding: 1rem;
