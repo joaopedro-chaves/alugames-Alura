@@ -4,7 +4,7 @@ Este projeto é um exercício de programação de lógica para gerenciar o alugu
 
 Este projeto/exercício é fornecido pela Alura como parte do curso Lógica de Programação.
 
-![printscrenen of the project](printscrenen.jpeg)
+![printscreen of the project](img/printscreen.jpeg)
 
 ## Roadmap
 
